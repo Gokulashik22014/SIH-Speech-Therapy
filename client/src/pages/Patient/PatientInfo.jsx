@@ -2,6 +2,13 @@
 import React from "react";
 import PatientDetails from "../../components/PathientDetails.jsx"
 
+
+// we are using a static data so need to fix this thing that is fetch the data and modify accordingly
+
+// uselocations and get the params to do the thing
+
+
+
 const PatientInfo = () => {
   // Sample patient data
   const patient = {

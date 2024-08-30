@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 const VideoSummary = () => {
   const [uploaded, setUploaded] = useState(false);
-  const [imageSrc, setImageSrc] = useState(null);
+  const [videoSrc, setVideoSrc] = useState(null);
   const onDrop = useCallback((acceptedFiles) => {
     const file = acceptedFiles[0];
     acceptedFiles.forEach((file) => {
@@ -14,14 +14,17 @@ const VideoSummary = () => {
         // Do whatever you want with the file contents
         const binaryStr = reader.result;
         // console.log(binaryStr); // Logs the binary string of the image
-        setImageSrc(binaryStr);
+        setVideoSrc(binaryStr);
         setUploaded(true);
-        console.log(imageSrc)
+        console.log(videoSrc);
       };
-      reader.readAsArrayBuffer(file);
+      reader.readAsDataURL(file);
     });
   }, []);
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: "video/*",
+  });
   return (
     <div className="mx-3 bg-slate-200 rounded-md w-2/3 shadow-md items-center flex flex-col py-6">
       <h1 className="text-xl font-semibold text-gray-800 mb-4">
@@ -38,14 +41,17 @@ const VideoSummary = () => {
           <p>Drop the files here ...</p>
         ) : uploaded ? (
           <div className="h-full w-full">
-            <img src={imageSrc} alt="" />
+            <img src={videoSrc} alt="" />
           </div>
         ) : (
           <p>Drag 'n' drop some files here, or click to select files</p>
         )} */}
-        <div className="h-full w-full">
-            <img src={imageSrc} alt="" />
-          </div>
+        {videoSrc && (
+          <video controls className="mt-4 max-w-full max-h-64 mx-auto">
+            <source src={videoSrc} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        )}
       </div>
       <button className="btn btn-primary w-1/2 my-7">Generate</button>
       {/* Summary Section */}
