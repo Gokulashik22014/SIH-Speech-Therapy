@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active{
+    @apply bg-blue-400;
+}
+/* styles/globals.css or styles/Review.module.css */
+/* styles/globals.css or styles/Review.module.css */
+.scrollbar-custom {
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #4a90e2 #e2e2e2; /* For Firefox */
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  height: 8px; /* Height for horizontal scrollbar */
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: #e2e2e2; /* Background of the scrollbar track */
+  border-radius: 8px; /* Rounded corners for the track */
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: #4a90e2; /* Color of the scrollbar handle */
+  border-radius: 8px; /* Rounded corners for the handle */
+}
+
+.scrollbar-custom::-webkit-scrollbar-corner {
+  background: transparent; /* Hide scrollbar corner */
+}
+
+/* Hide the default scrollbar arrows in Webkit browsers (Chrome, Safari) */
+.scrollbar-custom::-webkit-scrollbar-button {
+  display: none; /* Hides the arrows */
+}
+
+.custom-grid-gap {
+  grid-column-gap: 0.1rem; /* Adjust horizontal gap as needed */
+  grid-row-gap: 1rem;    /* Adjust vertical gap as needed */
+}
