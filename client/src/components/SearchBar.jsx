@@ -4,7 +4,7 @@ const SearchBar = () => {
   return (
     <div className="navbar bg-base-100 shadow-green-100 shadow-md" >
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">Speech Therapy</a>
+        <a className="btn btn-ghost text-xl">NeuroNex</a>
       </div>
       <div className="flex-none gap-2">
         <div className="form-control">

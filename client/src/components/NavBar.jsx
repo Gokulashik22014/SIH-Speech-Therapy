@@ -34,7 +34,7 @@ const Navbar = () => {
       </div>
       <div>
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl">Speech Therapy</a>
+          <a className="btn btn-ghost text-xl">NeuroNex</a>
         </div>
       </div>
     </div>

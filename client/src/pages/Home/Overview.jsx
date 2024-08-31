@@ -1,4 +1,5 @@
 import React from "react";
+import LineChart from "./LineChart";
 const Box = ({ img, count, total, heading }) => {
   return (
     <div className="space-y-2">
@@ -37,8 +38,10 @@ const Overview = () => {
           heading={"Ranking"}
         />
         <div className="flex flex-col space-y-2">
-          <h1 className="text-slate-500 font-semibold">This weeks data</h1>
-          <div className="h-24 w-96 bg-red-500 rounded-md"></div>
+          {/* <h1 className="text-slate-500 font-semibold">This weeks data</h1> */}
+          <div className="h-24 w-96 rounded-md">
+            {/* <LineChart/> */}
+          </div>
         </div>
       </div>
     </div>
