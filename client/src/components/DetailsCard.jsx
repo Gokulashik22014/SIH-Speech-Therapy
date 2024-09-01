@@ -1,7 +1,7 @@
 // components/PatientDetails.js
 import React from "react";
 
-const PatientDetails = ({ label, value }) => {
+const DetailsCard = ({ label, value }) => {
   return (
     <p className="text-sm text-gray-600 mb-1">
       <strong>{label}:</strong> {value}
@@ -9,4 +9,4 @@ const PatientDetails = ({ label, value }) => {
   );
 };
 
-export default PatientDetails;
+export default DetailsCard;

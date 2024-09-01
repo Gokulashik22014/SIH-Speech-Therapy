@@ -1,6 +1,6 @@
 // components/PatientInfo.js
 import React from "react";
-import PatientDetails from "../../components/PathientDetails.jsx"
+import DetailsCard from "../../components/DetailsCard.jsx"
 
 
 // we are using a static data so need to fix this thing that is fetch the data and modify accordingly
@@ -40,23 +40,23 @@ const PatientInfo = () => {
           <h2 className="text-2xl font-bold text-gray-800 mb-2">
             {patient.name}
           </h2>
-          <PatientDetails label="ID" value={patient.id} />
-          <PatientDetails label="Age" value={patient.age} />
-          <PatientDetails label="Gender" value={patient.gender} />
+          <DetailsCard label="ID" value={patient.id} />
+          <DetailsCard label="Age" value={patient.age} />
+          <DetailsCard label="Gender" value={patient.gender} />
         </div>
       </div>
       <div className="border-t border-gray-300 mt-6 pt-4">
-        <PatientDetails label="Date of Birth" value={patient.dateOfBirth} />
-        <PatientDetails label="Address" value={patient.address} />
-        <PatientDetails label="Phone" value={patient.phone} />
-        <PatientDetails label="Email" value={patient.email} />
-        <PatientDetails
+        <DetailsCard label="Date of Birth" value={patient.dateOfBirth} />
+        <DetailsCard label="Address" value={patient.address} />
+        <DetailsCard label="Phone" value={patient.phone} />
+        <DetailsCard label="Email" value={patient.email} />
+        <DetailsCard
           label="Insurance Provider"
           value={patient.insuranceProvider}
         />
-        <PatientDetails label="Policy Number" value={patient.policyNumber} />
-        <PatientDetails label="Allergies" value={patient.allergies} />
-        <PatientDetails label="Medications" value={patient.medications} />
+        <DetailsCard label="Policy Number" value={patient.policyNumber} />
+        <DetailsCard label="Allergies" value={patient.allergies} />
+        <DetailsCard label="Medications" value={patient.medications} />
       </div>
     </div>
   );

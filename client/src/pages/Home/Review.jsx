@@ -1,6 +1,6 @@
 import React from "react";
 import ReviewChart from "./ReviewChart";
-import User from "../../components/User";
+import UserCard from "../../components/UserCard";
 import { useNavigate } from "react-router-dom";
 const Review = () => {
   const navigate=useNavigate()
@@ -8,9 +8,9 @@ const Review = () => {
     <div className="flex w-full h-64 mt-12 rounded-md items-center space-x-3">
       <div className="w-1/3 h-72 overflow-y-auto scrollbar-custom p-4 bg-slate-200 rounded-md">
         {/* Custom scrollbar styles applied here */}
-        <User />
-        <User />
-        <User />
+        <UserCard />
+        <UserCard />
+        <UserCard />
       </div>
       <div className="w-2/3 flex flex-col justify-center items-start p-4 bg-slate-200 rounded-md">
         <div className="flex flex-row justify-between w-full">

@@ -4,12 +4,14 @@ import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home/Home.jsx";
+import CustomerHome from "./pages/Customers/CustomerHome.jsx";
 import Patients from "./pages/Patient/Patients.jsx";
 import Supervisor from "./pages/Supervisor.jsx";
 import Settings from "./pages/Settings.jsx";
 import History from "./pages/History.jsx";
 import MainTemplate from "./template/MainTemplate.jsx";
 import PatientSummary from "./pages/Patient/PatientSummary.jsx";
+import SuperDoctorHome from "./pages/SuperDoctor/SuperDoctorHome.jsx"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,7 +19,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <SuperDoctorHome />,
       },
       {
         path: "/patients",

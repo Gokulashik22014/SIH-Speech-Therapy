@@ -3,8 +3,9 @@ import Overview from "./Overview";
 import Review from "./Review";
 import UserCard from "../../components/UserCard";
 import Chat from "../../components/Chat";
+import SessionCard from "../../components/SessionCard"
 
-const Home = () => {
+const CustomerHome = () => {
   console.log("Home is present");
   return (
     <div className="flex ml-7 px-6 w-full h-full">
@@ -16,9 +17,7 @@ const Home = () => {
       {/* left part */}
       <div className="w-2/6 h-full ml-4">
         <div className="bg-slate-200 rounded-md py-6 px-3 h-1/2">
-          <UserCard apptime={"10:00Pm"} endtime={"11:00Pm"} />
-          <UserCard apptime={"10:00Pm"} endtime={"11:00Pm"} />
-          <UserCard apptime={"10:00Pm"} endtime={"11:00Pm"} />
+          <SessionCard isDownload={true}/>
         </div>
         <div className="bg-slate-200 rounded-md py-6 px-3 h-1/2 mt-2">
           <button className="w-full" onClick={() => document.getElementById("my_modal_3").showModal()}>
@@ -47,4 +46,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default CustomerHome;
