@@ -12,6 +12,7 @@ import History from "./pages/History.jsx";
 import MainTemplate from "./template/MainTemplate.jsx";
 import PatientSummary from "./pages/Patient/PatientSummary.jsx";
 import SuperDoctorHome from "./pages/SuperDoctor/SuperDoctorHome.jsx"
+import LoginRegisterPage from "./pages/LoginRegisterPage.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       { path: "/settings", element: <Settings /> },
     ],
   },
+  {
+    path:"/login-register",
+    element:<LoginRegisterPage/>
+  }
 ]);
 createRoot(document.getElementById("root")).render(
   <StrictMode>

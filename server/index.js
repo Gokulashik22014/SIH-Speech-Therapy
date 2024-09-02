@@ -2,14 +2,16 @@ import express from "express";
 import cors from "cors";
 import http from "http";
 import { Server as SocketServer } from "socket.io";
+//importing the routeres
+import UserRouter from "./routes/users.js"
 
 const app = express();
 const server = http.createServer(app);
 const io = new SocketServer(server, {
   cors: {
     origin: "*",
-    methods: ["GET", "POST"]
-  }
+    methods: ["GET", "POST"],
+  },
 });
 
 app.use(cors());
@@ -18,11 +20,15 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.json({ message: "Hello world" });
 });
-
 app.post("/sample", (req, res) => {
   res.json({ message: "Example" });
 });
 
+// using the routes
+app.use("/api/user",UserRouter)
+
+
+// socket connections bro 
 io.on("connection", (socket) => {
   console.log("A user connected");
 
