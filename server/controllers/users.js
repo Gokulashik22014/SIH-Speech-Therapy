@@ -1,3 +1,4 @@
+import { Query } from "appwrite";
 import { account, config, databases } from "../config.js";
 import { v4 as uuidv4 } from "uuid";
 export const createUser = async (req, res) => {
@@ -23,11 +24,30 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
     const response = await account.createEmailPasswordSession(email, password);
     if (response) {
-      res.json({ success: true });
+      const result = await databases.listDocuments(config.dbId, config.userDbId, [
+        Query.equal("email", email),
+      ]);
+      res.json({ success: true, result: result.documents[0] });
       return;
     }
     res.json({ success: false });
   } catch (error) {
     console.log(error);
+    res.json({ success: false, message: error });
+  }
+};
+
+export const getUser = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const response = await databases.listDocuments(
+      config.dbId,
+      config.userDbId,
+      [Query.equal("email", email)]
+    );
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error });
   }
 };

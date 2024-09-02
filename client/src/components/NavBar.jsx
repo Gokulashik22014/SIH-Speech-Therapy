@@ -4,14 +4,23 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { GrUserManager } from "react-icons/gr";
 import { FaRegUser } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAuthContext from "../hooks/useAuthContext";
+function capitalizeSubstring(str) {
+  if (!str || str.length <= 1) {
+    return str;
+  }
+  let first=str.charAt(0)
+  let capitalized=first.toUpperCase()+str.substring(1)
+  return capitalized;
+}
 const Navbar = () => {
   const location = useLocation();
+  const {user,pageInfo,page}=useAuthContext()
   const navigate=useNavigate()
 //   console.log(location.pathname)
   const navbarDetails = [
     { name: "Home", icon: <GoHome />, link: "/" },
-    { name: "Patients", icon: <FaRegUser />, link: "/patients" },
-    { name: "Supervisor", icon: <GrUserManager />, link: "/supervisor" },
+    { name: capitalizeSubstring(page[user.role].sub.link.substring(1)), icon: <FaRegUser />, link: page[user.role].sub.link},
     { name: "Settings", icon: <IoSettingsOutline />, link: "/settings" },
     { name: "History", icon: <GoHistory />, link: "/history" },
   ];

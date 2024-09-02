@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
+import useAuthContext from "../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
+
 const LoginRegisterPage = () => {
+
+  const navigate = useNavigate();
+
+  // hooks
+  const { login, register } = useAuthContext();
+
   // State management for form toggle
   const [isSignUp, setIsSignUp] = useState(false);
 
@@ -20,7 +28,7 @@ const LoginRegisterPage = () => {
     setUsername("");
     setRole("Doctor");
   };
-  const navigate = useNavigate();
+
   // Handler for form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -30,38 +38,12 @@ const LoginRegisterPage = () => {
         // Handle sign-up logic here
         if (role === "Doctor") roleOfUser = 1;
         else if (role === "Supervisor") roleOfUser = 2;
-
-        const response = await axios.post(
-          "http://localhost:3000/api/user/create",
-          {
-            email: email,
-            password: password,
-            role: roleOfUser,
-            username: username,
-          }
-        );
-        if (response.data.success) {
-          localStorage.setItem("user", {
-            username: username,
-            email: email,
-            role: roleOfUser,
-          });
-        }
+        register(username, email, password, roleOfUser);
         navigate("/");
       } else {
         // Handle sign-in logic here
-        const response = await axios.post(
-          "http://localhost:3000/api/user/login",
-          { email: email, password: password }
-        );
-        if (response) {
-          localStorage.setItem("user", {
-            username: username,
-            email: email,
-            role: roleOfUser,
-          });
-          navigate("/");
-        }
+        login(email, password);
+        navigate("/")
       }
     } catch (error) {
       console.log(error);

@@ -1,6 +1,15 @@
 import React from "react";
+import useAuthContext from "../hooks/useAuthContext";
+import { useNavigate } from "react-router-dom";
+
 
 const SearchBar = () => {
+  const navigate=useNavigate()
+  const {logout}=useAuthContext()
+  const handleLogout=()=>{
+    logout()
+    navigate("/login-register")
+  }
   return (
     <div className="navbar bg-base-100 shadow-green-100 shadow-md" >
       <div className="flex-1">
@@ -32,7 +41,7 @@ const SearchBar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a>Logout</a>
+              <button onClick={handleLogout}>Logout</button>
             </li>
           </ul>
         </div>

@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react'
-import { Outlet, useNavigate } from 'react-router-dom'
+import React, { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
 import Navbar from "../components/Navbar";
+import useAuthContext from "../hooks/useAuthContext";
 function MainTemplate() {
-  const navigate=useNavigate()
-  useEffect(()=>{
-    const user=localStorage.getItem("user")
-    if(!user){
-      navigate("/login-register")
+  const { user } = useAuthContext();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!user) {
+      navigate("/login-register");
     }
-  },[])
+  }, []);
   return (
     <div className="h-screen flex flex-col">
       <SearchBar />
@@ -18,12 +19,12 @@ function MainTemplate() {
         <div className="w-1/6 h-full">
           <Navbar />
         </div>
-        <div className='w-5/6'>
-            <Outlet/>
+        <div className="w-5/6">
+          <Outlet />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default MainTemplate
+export default MainTemplate;
