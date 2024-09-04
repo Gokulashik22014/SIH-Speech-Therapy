@@ -8,14 +8,14 @@ const Overview = () => {
       <div className="flex justify-between w-full">
         <Box
           img={"./images/therapy.png"}
-          count={12}
-          total={20}
+          count={0}
+          total={0}
           heading={"Therapy sessions Attended"}
         />
         <Box
           img={"./images/progress.png"}
-          count={12}
-          total={20}
+          count={0}
+          total={0}
           heading={"Current Therapy Progress"}
         />
         {/* Schedule appoinment */}

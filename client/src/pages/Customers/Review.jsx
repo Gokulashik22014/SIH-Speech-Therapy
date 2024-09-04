@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 // import ReviewChart from "./ReviewChart";
 import SessionCard from "../../components/SessionCard";
 import { useNavigate } from "react-router-dom";
 import DetailsCard from "../../components/DetailsCard";
 const Review = () => {
   const navigate = useNavigate();
+  const [isPresent,setIsPresent]=useState(false)
   return (
     <div className="flex w-full h-64 mt-12 rounded-md items-center space-x-3">
       <div className="w-1/3 h-72 overflow-y-auto scrollbar-custom p-4 bg-slate-200 rounded-md">

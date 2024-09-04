@@ -12,6 +12,11 @@ export const createUser = async (req, res) => {
       id,
       { email: email, role: role, username: username }
     );
+    let configId;
+    if(role==0) configId=config.patientsId
+    else if(role==1)configId=config.doctorsId
+    else configId=config.supervisorsId
+    await databases.createDocument(config.dbId,configId,id,{username});
     res.json({ success: true });
   } catch (error) {
     console.log(error);
@@ -37,9 +42,8 @@ export const login = async (req, res) => {
   }
 };
 
-export const getUser = async (req, res) => {
+export const getUser = async (email) => {
   try {
-    const { email } = req.body;
     const response = await databases.listDocuments(
       config.dbId,
       config.userDbId,
