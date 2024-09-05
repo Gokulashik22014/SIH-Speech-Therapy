@@ -55,7 +55,7 @@ const AuthProvider = ({ children }) => {
           role: localStorage.getItem("role"),
         }));
       }
-      setUserPresent(true)
+      // setUserPresent(true)
       return response.data.success;
     } catch (error) {
       console.log(error);

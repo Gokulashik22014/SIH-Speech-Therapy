@@ -15,3 +15,18 @@ export const getUserData=async(req,res)=>{
         res.json({success:false,message:error})
     }
 }
+
+export const makeConnectionWithSupervisor=async(req,res)=>{
+    try {
+        const {user,supervisor}=req.body
+        const result=await getUser(user,config.doctorsId)
+        console.log(user,supervisor,result)
+        await databases.updateDocument(config.dbId,config.doctorsId,result.$id,{supervisors:supervisor})
+        const supervisorData=await databases.getDocument(config.dbId,config.supervisorsId,supervisor)
+        const doctorList=[...supervisorData.doctors,result.$id]
+        await databases.updateDocument(config.dbId,config.supervisorsId,supervisor,{doctors:doctorList})
+        res.json({success:true})
+    } catch (error) {
+        console.log(error)
+    }
+}

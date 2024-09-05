@@ -8,14 +8,14 @@ const Overview = () => {
       <div className="flex justify-between w-full">
         <Box
           img={"./images/patient.png"}
-          count={12}
-          total={20}
+          count={0}
+          total={0}
           heading={"Today's Patients"}
         />
         <Box
           img={"./images/ranking.png"}
-          count={12}
-          total={20}
+          count={0}
+          total={0}
           heading={"Ranking"}
         />
         <div className="flex flex-col space-y-2">

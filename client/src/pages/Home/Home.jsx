@@ -3,6 +3,7 @@ import Overview from "./Overview";
 import Review from "./Review";
 import UserCard from "../../components/UserCard";
 import Chat from "../../components/Chat";
+import AddSupervisor from "./AddSupervisor";
 
 const Home = () => {
   console.log("Home is present");
@@ -42,6 +43,9 @@ const Home = () => {
           </form>
           <Chat/>
         </div>
+      </dialog>
+      <dialog id="my_modal_4" className="modal">
+        <AddSupervisor/>
       </dialog>
     </div>
   );

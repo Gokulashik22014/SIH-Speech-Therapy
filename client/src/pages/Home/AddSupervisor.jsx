@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const AddDoctor = () => {
+const AddSupervisor = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [doctors, setDoctors] = useState([]);
   const [filteredDoctors, setFilteredDoctors] = useState([]);
@@ -35,7 +35,7 @@ const AddDoctor = () => {
 
   // Function to handle booking
   const handleBookDoctor = async(doctorId) => {
-    const response=await axios.post("http://localhost:3000/api/patient/update",{user:localStorage.getItem("user"),supervisor:doctorId})
+    const response=await axios.post("http://localhost:3000/api/doctor/update",{user:localStorage.getItem("user"),supervisor:doctorId})
     
   };
 
@@ -73,4 +73,4 @@ const AddDoctor = () => {
   );
 };
 
-export default AddDoctor;
+export default AddSupervisor;

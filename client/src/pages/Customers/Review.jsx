@@ -27,7 +27,18 @@ const Review = () => {
   if (patient && !patient.supervisors)
     return (
       <div className="flex h-72 justify-center items-center">
-        <button className="btn btn-primary" onClick={() => document.getElementById("my_modal_2").showModal()}>Get in touch with a doctor</button>
+        <button
+          className="btn btn-primary"
+          onClick={() => document.getElementById("my_modal_2").showModal()}
+        >
+          Get in touch with a doctor
+        </button>
+      </div>
+    );
+  if (patient && !patient.doctors)
+    return (
+      <div className="flex h-72 justify-center items-center">
+        <h1>Wait for the supervisor to assign doctor</h1>
       </div>
     );
   return (
@@ -66,7 +77,6 @@ const Review = () => {
         </div>
       </div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
-      
     </div>
   );
 };
