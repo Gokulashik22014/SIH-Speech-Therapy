@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import Home from "../pages/Home/Home.jsx";
 import CustomerHome from "../pages/Customers/CustomerHome.jsx";
@@ -32,12 +32,10 @@ const AuthProvider = ({ children }) => {
     role: 0,
   });
 
-  //   useEffect from here
-
   //   function from here
-  const login = async (email, password ) => {
+  const login = async (email, password) => {
     try {
-        console.log(email)
+      console.log(email);
       const response = await axios.post(
         "http://localhost:3000/api/user/login",
         {
@@ -46,19 +44,25 @@ const AuthProvider = ({ children }) => {
         }
       );
       if (response.data.success) {
-        const data=response.data.result
+        const data = response.data.result;
         localStorage.setItem("user", data.username);
-        localStorage.setItem("role",data.role)
-        setUser({ username:data.username,email:data.email, role: data.role });
-        // navigate("/");
+        localStorage.setItem("role", data.role);
+        localStorage.setItem("email", data.email);
+        setUser((prevUser) => ({
+          ...prevUser,
+          username: localStorage.getItem("user"),
+          email: localStorage.getItem("email"),
+          role: localStorage.getItem("role"),
+        }));
       }
-      return response.data.success
+      setUserPresent(true)
+      return response.data.success;
     } catch (error) {
       console.log(error);
-      return false
+      return false;
     }
   };
-  const register = async ( username, email, password, roleOfUser ) => {
+  const register = async (username, email, password, roleOfUser) => {
     try {
       const response = await axios.post(
         "http://localhost:3000/api/user/create",
@@ -72,19 +76,26 @@ const AuthProvider = ({ children }) => {
       if (response.data.success) {
         localStorage.setItem("user", username);
         localStorage.setItem("role", roleOfUser);
+        localStorage.setItem("email", email);
+        setUser((prevUser) => ({
+          ...prevUser,
+          username,
+          email,
+          role: roleOfUser,
+        }));
+      setUserPresent(true)
 
-        setUser({ username, email, role: roleOfUser });
       }
-      return response.data.success
+      return response.data.success;
     } catch (error) {
       console.log(error);
-      return false
+      return false;
     }
   };
-  const logout=()=>{
-    localStorage.clear()
-  }
-  const authInfo = { user,pageInfo,page,login, register,logout };
+  const logout = () => {
+    localStorage.clear();
+  };
+  const authInfo = { user, pageInfo, page, login, register, logout };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

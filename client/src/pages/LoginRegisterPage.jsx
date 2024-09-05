@@ -38,12 +38,12 @@ const LoginRegisterPage = () => {
         // Handle sign-up logic here
         if (role === "Doctor") roleOfUser = 1;
         else if (role === "Supervisor") roleOfUser = 2;
-        register(username, email, password, roleOfUser);
-        navigate("/");
+        const result=register(username, email, password, roleOfUser);
+        if(result)navigate("/");
       } else {
         // Handle sign-in logic here
-        login(email, password);
-        navigate("/")
+        const result=login(email, password);
+        if(result)navigate("/")
       }
     } catch (error) {
       console.log(error);

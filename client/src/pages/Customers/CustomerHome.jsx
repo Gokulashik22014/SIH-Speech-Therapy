@@ -4,6 +4,7 @@ import Review from "./Review";
 import UserCard from "../../components/UserCard";
 import Chat from "../../components/Chat";
 import SessionCard from "../../components/SessionCard"
+import AddDoctor from "./AddDoctor";
 
 const CustomerHome = () => {
   console.log("Home is present");
@@ -41,6 +42,9 @@ const CustomerHome = () => {
           </form>
           <Chat/>
         </div>
+      </dialog>
+      <dialog id="my_modal_2" className="modal">
+        <AddDoctor/>
       </dialog>
     </div>
   );

@@ -4,6 +4,9 @@ import http from "http";
 import { Server as SocketServer } from "socket.io";
 //importing the routeres
 import UserRouter from "./routes/users.js"
+import PatientRouter from "./routes/patients.js"
+import DoctorRouter from "./routes/doctors.js"
+import SupervisorRouter from "./routes/supervisor.js"
 
 const app = express();
 const server = http.createServer(app);
@@ -26,7 +29,9 @@ app.post("/sample", (req, res) => {
 
 // using the routes
 app.use("/api/user",UserRouter)
-
+app.use("/api/patient",PatientRouter)
+app.use("/api/doctor",DoctorRouter)
+app.use("/api/supervisor",SupervisorRouter)
 
 // socket connections bro 
 io.on("connection", (socket) => {

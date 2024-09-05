@@ -11,10 +11,9 @@ import useAuthContext from "../hooks/useAuthContext.jsx";
 
 
 const Routers = () => {
-  const { user,pageInfo,page } = useAuthContext();
+  const { pageInfo,page } = useAuthContext();
   
-  
-
+  const role=Number(localStorage.getItem('role'))
   const router = createBrowserRouter([
     {
       path: "/",
@@ -22,11 +21,11 @@ const Routers = () => {
       children: [
         {
           path: "/",
-          element: page[user.role].home,
+          element: page[role].home,
         },
         {
-          path: page[user.role].sub.link,
-          element: page[user.role].sub.page,
+          path: page[role].sub.link,
+          element: page[role].sub.page,
         },
         {
           path: "/patients/:id",
