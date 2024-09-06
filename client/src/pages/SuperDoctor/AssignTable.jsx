@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+// allows the doctor to make allocate doctors to the patients 
+// the allocation still need a proper algorithm to work without human intervention
+
 const AssignTable = () => {
   const [supervisor, setSupervisor] = useState(null);
   const [patients, setPatients] = useState([]);
@@ -17,7 +20,7 @@ const AssignTable = () => {
       const supervisorData = response.data.result;
       setSupervisor(supervisorData);
 
-      // Assuming patients data is fetched as part of supervisor response
+      //patients data is fetched as part of supervisor response
       if (supervisorData && supervisorData.patients) {
         setPatients(supervisorData.patients);
         setDoctors(supervisor.doctors);

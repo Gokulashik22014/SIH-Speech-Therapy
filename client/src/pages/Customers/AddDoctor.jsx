@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+
+// the component enables the patient to book that is choose a supervisor still needs some work 
+
 const AddDoctor = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [doctors, setDoctors] = useState([]);
   const [filteredDoctors, setFilteredDoctors] = useState([]);
 
-  // Fetch doctor names from backend on component mount
+  //doctor names from backend on component mount
   useEffect(() => {
     console.log(doctors)
     const fetchDoctors = async () => {

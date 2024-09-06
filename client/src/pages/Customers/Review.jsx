@@ -8,6 +8,7 @@ import axios from "axios";
 const Review = () => {
   const navigate = useNavigate();
   const [patient, setPatient] = useState();
+  // fetches the patients details from the database
   const getUserData = async () => {
     try {
       const username = localStorage.getItem("user");
