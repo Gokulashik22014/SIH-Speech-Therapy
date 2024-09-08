@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import http from "http";
+import dotenv from "dotenv"
 import { Server as SocketServer } from "socket.io";
 //importing the routeres
 import UserRouter from "./routes/users.js"
@@ -8,6 +9,7 @@ import PatientRouter from "./routes/patients.js"
 import DoctorRouter from "./routes/doctors.js"
 import SupervisorRouter from "./routes/supervisor.js"
 
+dotenv.config()
 const app = express();
 const server = http.createServer(app);
 const io = new SocketServer(server, {

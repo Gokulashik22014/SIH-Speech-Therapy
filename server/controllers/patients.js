@@ -1,7 +1,7 @@
 import { Query } from "appwrite";
-import {databases,config} from "../config.js"
+import {databases} from "../appwriteLib.js"
 import { getUser } from "../utilityFunctions/utilityFunctions.js";
-
+import config from "../config.js";
 // book appointment
 // register with the supervisor
 export const getUserData=async(req,res)=>{

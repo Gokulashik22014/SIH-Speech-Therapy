@@ -1,6 +1,7 @@
 import { Query } from "appwrite";
-import { account, config, databases } from "../config.js";
+import { account, databases } from "../appwriteLib.js";
 import { v4 as uuidv4 } from "uuid";
+import config from "../config.js";
 export const createUser = async (req, res) => {
   try {
     const { username, email, password, role } = req.body;

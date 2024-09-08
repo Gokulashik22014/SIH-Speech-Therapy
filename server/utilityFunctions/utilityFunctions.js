@@ -1,6 +1,6 @@
 import { Query } from "appwrite";
-import { databases, config } from "../config.js";
-
+import { databases } from "../appwriteLib.js";
+import config from "../config.js";
 export const getUser = async (user, collectionId) => {
   try {
     const result = await databases.listDocuments(config.dbId, collectionId, [
