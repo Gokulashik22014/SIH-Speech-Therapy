@@ -4,77 +4,37 @@ import axios from "axios";
 
 const VideoSummary = () => {
   const [uploaded, setUploaded] = useState(false);
-  const [videoSrc, setVideoSrc] = useState(null);
+  const [videoFile, setVideoFile] = useState(null);
   const [summary, setSummary] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const sample = async () => {
-    axios
-      .get("https://ac36-34-148-199-54.ngrok-free.app/", {
-        headers: {
-          "ngrok-skip-browser-warning": "true",
-        },
-      })
-      .then((res) => console.log(res));
+
+  const handleGenerate = async () => {
+    setIsLoading(true);
+    try {
+      const formData = new FormData();
+      formData.append("video", videoFile);
+      const response = await axios.post("http://localhost:3000/api/ai/summarize", {
+        question:
+          "What they forget to mention there is the following. When you're reading the book, you can't just read like this. You can't just every day just go, this does not simply mean that there will be no dramatic surprises. It means simply that there must be no surprises which do not as they unfold as that doesn't make sense for the audience. You can't read like that. Reading like that, it's not deliberate practice. Deliberate practice when it comes to communication is you must read as if you're presenting for an audience then you improve. And you must read in a way where you play with all your foundations too. So if you read in a way where you did this, before leaving the subject of the conflicted situation that occurred, I wanted to point out that the performer's conflict needs to involve other people. Again, so using all the emotions and all the foundations, high levels of effort during practice will transfer more of those skills into your everyday life.",
+      });
+      setSummary(response.data.result);
+    } catch (error) {
+      console.error("Error generating summary:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
-  useEffect(() => {
-    sample();
-  }, []);
+
   const onDrop = useCallback((acceptedFiles) => {
     const file = acceptedFiles[0];
-    const reader = new FileReader();
-
-    reader.onabort = () => console.log("file reading was aborted");
-    reader.onerror = () => console.log("file reading has failed");
-    reader.onload = () => {
-      setVideoSrc(reader.result);
-      setUploaded(true);
-    };
-    reader.readAsDataURL(file);
+    setVideoFile(file);
+    setUploaded(true);
   }, []);
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     accept: "video/*",
   });
-
-  const handleGenerate = async () => {
-    if (!videoSrc) return;
-
-    setIsLoading(true);
-    const formData = new FormData();
-    formData.append("file", dataURItoBlob(videoSrc), "video.mp4");
-
-    try {
-      const response = await axios.post(
-        "https://ac36-34-148-199-54.ngrok-free.app/summarize",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            "ngrok-skip-browser-warning": "true",
-          },
-        }
-      );
-      setSummary(response.data.summary);
-    } catch (error) {
-      console.error("Error generating summary:", error);
-      setSummary("Error generating summary. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // Helper function to convert Data URI to Blob
-  const dataURItoBlob = (dataURI) => {
-    const byteString = atob(dataURI.split(",")[1]);
-    const mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
-    const ab = new ArrayBuffer(byteString.length);
-    const ia = new Uint8Array(ab);
-    for (let i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([ab], { type: mimeString });
-  };
 
   return (
     <div className="mx-3 bg-slate-200 rounded-md w-2/3 shadow-md items-center flex flex-col py-6">
@@ -87,9 +47,9 @@ const VideoSummary = () => {
         {...getRootProps()}
       >
         <input {...getInputProps()} />
-        {videoSrc ? (
+        {videoFile ? (
           <video controls className="mt-4 max-w-full max-h-64 mx-auto">
-            <source src={videoSrc} type="video/mp4" />
+            <source src={URL.createObjectURL(videoFile)} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         ) : (

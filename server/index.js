@@ -8,6 +8,7 @@ import UserRouter from "./routes/users.js"
 import PatientRouter from "./routes/patients.js"
 import DoctorRouter from "./routes/doctors.js"
 import SupervisorRouter from "./routes/supervisor.js"
+import AiRouter from "./routes/ai.js"
 
 dotenv.config()
 const app = express();
@@ -34,6 +35,8 @@ app.use("/api/user",UserRouter)
 app.use("/api/patient",PatientRouter)
 app.use("/api/doctor",DoctorRouter)
 app.use("/api/supervisor",SupervisorRouter)
+app.use("/api/ai",AiRouter)
+
 
 // socket connections bro 
 io.on("connection", (socket) => {
