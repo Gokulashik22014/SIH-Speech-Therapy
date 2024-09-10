@@ -56,7 +56,7 @@ const Review = () => {
           <h1 className="font-bold text-blue-400 uppercase text-xl ">Name</h1>
           <button
             className="bg-primary text-white  px-2 rounded-lg"
-            onClick={() => navigate("/patients")}
+            onClick={() => navigate("/doctors")}
           >
             Get more info
           </button>

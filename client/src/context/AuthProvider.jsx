@@ -54,6 +54,7 @@ const AuthProvider = ({ children }) => {
           email: localStorage.getItem("email"),
           role: localStorage.getItem("role"),
         }));
+        console.log(user)
       }
       // setUserPresent(true)
       return response.data.success;

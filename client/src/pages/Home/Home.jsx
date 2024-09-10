@@ -17,9 +17,9 @@ const Home = () => {
       {/* left part */}
       <div className="w-2/6 h-full ml-4">
         <div className="bg-slate-200 rounded-md py-6 px-3 h-1/2">
-          <UserCard apptime={"10:00Pm"} endtime={"11:00Pm"} />
-          <UserCard apptime={"10:00Pm"} endtime={"11:00Pm"} />
-          <UserCard apptime={"10:00Pm"} endtime={"11:00Pm"} />
+          <UserCard apptime={"10:00 am"} endtime={"11:00 am"} />
+          <UserCard apptime={"10:00 am"} endtime={"11:00 am"} />
+          <UserCard apptime={"10:00 am"} endtime={"11:00 am"} />
         </div>
         <div className="bg-slate-200 rounded-md py-6 px-3 h-1/2 mt-2">
           <button className="w-full" onClick={() => document.getElementById("my_modal_3").showModal()}>

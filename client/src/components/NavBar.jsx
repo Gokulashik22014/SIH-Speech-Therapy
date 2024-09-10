@@ -17,6 +17,7 @@ const Navbar = () => {
   const location = useLocation();
   const {user,pageInfo,page}=useAuthContext()
   const navigate=useNavigate()
+  console.log(user.role)
 //   console.log(location.pathname)
   const navbarDetails = [
     { name: "Home", icon: <GoHome />, link: "/" },

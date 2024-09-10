@@ -13,18 +13,21 @@ const AssignTable = () => {
   const getUserData = async () => {
     try {
       const username = localStorage.getItem("user");
-      const response = await axios.get(
+      await axios.get(
         `http://localhost:3000/api/supervisor/getuser/${username}`
-      );
-
-      const supervisorData = response.data.result;
+      ).then((response)=>{
+        const supervisorData = response.data.result;
       setSupervisor(supervisorData);
 
       //patients data is fetched as part of supervisor response
+      // console.log(supervisor.doctors)  
       if (supervisorData && supervisorData.patients) {
         setPatients(supervisorData.patients);
         setDoctors(supervisor.doctors);
       }
+      })
+
+      
     } catch (error) {
       console.log(error);
     }
