@@ -37,6 +37,7 @@ app.use("/api/doctor",DoctorRouter)
 app.use("/api/supervisor",SupervisorRouter)
 app.use("/api/ai",AiRouter)
 
+//need to update it so that only one user is speaking to one user at a time
 
 // socket connections bro 
 io.on("connection", (socket) => {
