@@ -8,6 +8,8 @@ import Doctor from "../pages/Customers/Doctor.jsx";
 import Students from "../pages/SuperDoctor/Student.jsx";
 export const AuthContext = createContext();
 
+//we could improve this with the hook keep in mind we are not checking if the use data is chainging in between or not 
+
 const AuthProvider = ({ children }) => {
   // normal
   const pageInfo = {
